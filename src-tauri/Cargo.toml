@@ -1,0 +1,36 @@
+[package]
+name = "yulincorp-sync-system"
+version = "0.1.0"
+description = "陕西昱霖采购销售协同管理系统"
+authors = ["陕西昱霖科技有限公司"]
+edition = "2021"
+
+[lib]
+name = "yulincorp_sync_system_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-fs = "2"
+tauri-plugin-sql = { version = "2", features = ["sqlite"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.31", features = ["bundled"] }
+uuid = { version = "1", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+ring = "0.17"
+ed25519-dalek = "2"
+base32 = "0.5"
+base64 = "0.22"
+log = "0.4"
+env_logger = "0.11"
+regex = "1"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
